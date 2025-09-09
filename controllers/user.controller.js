@@ -1,4 +1,4 @@
-const customerModel = reqire ("../models/user.model")
+const customerModel = require ("../models/user.model")
 let allCustomers =[]
 
 exports.getSignup = (req, res) => {
@@ -9,7 +9,7 @@ exports.postRegister = (req, res) => {
     console.log(req.body);
     // res.send('confirmed')
     // allCustomers.push(req.body)
-    let newCustomer = new customerModel(req.body);
+    let newCustomer = new customerModel ( req.body);
     newCustomer.save()
     .then(() => {
         res.redirect('/dashboard');
@@ -37,7 +37,7 @@ exports.getDashboard = ( req, res) => {
     });
 };
 
-app.postLogin = (req, res) => {
+exports.postLogin = (req, res) => {
     res.send('confirmed again')
 };
 

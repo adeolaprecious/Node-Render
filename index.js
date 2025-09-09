@@ -1,5 +1,7 @@
-const express = require ('express');
+const express = require ("express");
+// const express = require('express');
 const app = express();
+// const router = express.Router();
 const dotenv = require('dotenv')
 const ejs = require('ejs')
 app.set('view engine', 'ejs');
@@ -29,6 +31,8 @@ catch((err) => {
 allCustomers = []
 
 app.use("/user", customerRouter);
+
+const port = process.env.PORT || 4565 ;
 
 app.listen(port, () => {
     console.log('App has started already');

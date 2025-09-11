@@ -6,4 +6,4 @@ let customerSchema = mongoose.Schema({
     password: {type: String, required: true},
 });
 
-module.exports = mongoose.model('Customer', customerSchema);
+module.exports = mongoose.model('customer', customerSchema);

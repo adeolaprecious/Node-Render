@@ -1,4 +1,5 @@
 const customerModel = require ("../models/user.model")
+const nodemailer = require('nodemailer');
 let allCustomers =[]
 
 exports.getSignup = (req, res) => {
@@ -12,7 +13,28 @@ exports.postRegister = (req, res) => {
     let newCustomer = new customerModel ( req.body);
     newCustomer.save()
     .then(() => {
-        res.redirect('/dashboard');
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'adeolaprecous006@gmail.com',
+                pass: 'kbiicbpfnqqrdtct'
+            }
+        });
+        let mailOptions = {
+            from: 'adeolaprecious006@gmail.com',
+            to: [req.body.email, 'davidexcel2304@gmail.com'],           
+            subject: 'Sending Email using Node.js',
+            text: "That was easy!"
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+        res.redirect('/user/dashboard');
     })
     .catch((err) => {
         console.error("Error registering customer:", err);

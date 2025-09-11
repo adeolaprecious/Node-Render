@@ -21,6 +21,7 @@ catch((err) => {
     console.log("MongoDB connection error:", err);
 })
 
+
 // let customerModel = mongoose.model('Customer', customerSchema);
 
 allCustomers = []
@@ -30,6 +31,7 @@ app.use("/user", customerRouter);
 const port = process.env.PORT || 4565 ;
 
 app.listen(port, () => {
-    console.log('App has started already');
+    // console.log('App has started already');
+    console.log( `App has started already at ${port}` );
     
 });

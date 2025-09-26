@@ -75,21 +75,20 @@
     </style>
   </head>
   <body>
-
     <form class="form" action="/user/login" method="post">
       <p class="form-title">Sign in to your account</p>
       <div class="input-container">
-        <input type="email" placeholder="Enter email" />
+        <input type="email" placeholder="Enter email" name="email" />
         <span> </span>
       </div>
       <div class="input-container">
-        <input type="password" placeholder="Enter password" />
+        <input type="password" placeholder="Enter password" name="password" />
       </div>
       <button type="submit" class="submit">Sign in</button>
 
       <p class="signup-link">
         No account?
-        <a href="">Sign up</a>
+        <a href="/user/signUp">Sign up</a>
       </p>
     </form>
   </body>

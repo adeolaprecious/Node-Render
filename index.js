@@ -3,13 +3,13 @@ const app = express();
 const dotenv = require('dotenv')
 const ejs = require('ejs')
 app.set('view engine', 'ejs');
-
 const mongoose = require('mongoose');
+const cors = require("cors")
+app.use(cors())
 dotenv.config()
 const customerRouter = require ('./routes/user.route')
 
-// const customerModel = require('./models/user.model')
-
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const URI = process.env.URI
 
@@ -21,10 +21,9 @@ catch((err) => {
     console.log("MongoDB connection error:", err);
 })
 
-
 // let customerModel = mongoose.model('Customer', customerSchema);
 
-allCustomers = []
+let allCustomers = []
 
 app.use("/user", customerRouter);
 
